@@ -1,11 +1,11 @@
-from rest_framework import viewsets, status
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import *
 from .serializers import *
 from django.contrib.gis.geos import Point, Polygon
 
-
+# View for render the process of Specific the Polygon Contains Point
 class PolygonContainsPoint(APIView):
 	def get(self, request, format=None):
 		marker_slug=request.GET['slug']
@@ -18,10 +18,11 @@ class PolygonContainsPoint(APIView):
 
 		return Response({'data': data}, status=status.HTTP_200_OK)
 
+# View for rendr the process of extract the marker points in the one polygon
 class PointsInPolygon(APIView):
 	def get(self, request, format=None):
-		name_1=request.GET['name_1']
-		polygon=OstanIran.objects.filter(name_1__contains=name_1).values()
+		name=request.GET['name']
+		polygon=OstanIran.objects.filter(name__contains=name).values()
 		poly=polygon[0]['geom'].coords
 		p=Polygon(poly[0][0])
 		marker=Marker.objects.filter(marker__within=p)
@@ -29,16 +30,3 @@ class PointsInPolygon(APIView):
 		data=serialized_data.data
 
 		return Response({'data': data}, status=status.HTTP_200_OK)
-
-	
-
-#class PointsInPolygon(viewsets.ModelViewSet):
-#	ostan= OstanIran.objects.all().values()
-#	i2=0
-#	for y in ostan:
-#		poly=ostan[i2]['geom'].coords
-#		polygon=Polygon(poly[0][0])
-#		queryset=Marker.objects.filter(marker__within=polygon)
-#		i2=i2+1
-#		serializer_class=MarkerSerializer
-		
