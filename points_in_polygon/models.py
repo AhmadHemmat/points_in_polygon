@@ -17,6 +17,7 @@ class Neighborhoods(models.Model):
     #gf= models.GeometryCollectionField(srid=4326, null=True)
 
 class Marker(models.Model):
+    slug= models.SlugField(null=True)
     marker= models.PointField(srid=4326)
 
 #>>> polygon=OstanIran.objects.all().values()
@@ -41,6 +42,7 @@ class OstanIran(models.Model):
     shape_leng = models.FloatField(null=True)
     shape_area = models.FloatField(null=True)
     geom = models.MultiPolygonField(srid=4326, null=True)
+    
     #marker= models.GeometryCollectionField(srid=4326, default=geom.polygon)
 
 
