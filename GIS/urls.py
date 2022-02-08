@@ -22,9 +22,9 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Silicium API",
+      title="GIS API",
       default_version='v1',
-      description="Here is all our endpoints.",
+      description="for test PolygonContainsPoint and PointsInPolygon views please use the Postman",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="admin@site.local"),
       license=openapi.License(name="GPLv3 License"),

@@ -3,7 +3,7 @@ from django.contrib.gis.db import models
 
 # Model for create marker as point
 class Marker(models.Model):
-    slug= models.SlugField(null=True)
+    slug= models.SlugField(unique=True)
     marker= models.PointField(srid=4326)
 
     def __str__(self):
@@ -11,8 +11,8 @@ class Marker(models.Model):
 
 # Model for entering the borders in the form of polygons
 class OstanIran(models.Model):
-    name = models.CharField(max_length=75)
-    geom = models.MultiPolygonField(srid=4326, null=True)
+    name = models.CharField(max_length=750)
+    geom = models.MultiPolygonField(srid=4326)
 
     def __str__(self):
         return self.name
