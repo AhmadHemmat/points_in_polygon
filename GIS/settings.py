@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'rest_framework.authtoken',
-    'djoser',
-    'drf_yasg',
+    #'rest_framework.authtoken',
+    #'djoser',
+    #'drf_yasg',
 
     'django.contrib.gis',
     'leaflet',
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'points_in_polygon.middleware.SavePolygonMarkerMiddleware'
 ]
 
 ROOT_URLCONF = 'GIS.urls'
