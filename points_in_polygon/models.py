@@ -14,9 +14,9 @@ class OstanIran(models.Model):
 
 # Model for create marker as point
 class Marker(models.Model):
-    slug= models.SlugField(unique=True)
-    marker= models.PointField(srid=4326)
-    polygon= models.ForeignKey(OstanIran, on_delete=models.CASCADE,related_name='marker', null=True, blank=True)
+    slug = models.SlugField(unique=True)
+    marker = models.PointField(srid=4326)
+    polygon = models.ForeignKey(OstanIran, on_delete=models.CASCADE,related_name='marker', null=True, blank=True)
     
     @property
     def polygon_name(self):

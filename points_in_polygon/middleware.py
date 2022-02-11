@@ -8,14 +8,13 @@ class SavePolygonMarkerMiddleware:
 		self.get_response = get_response
 
 	def __call__(self, request):
-		markers=Marker.objects.all()
+		markers = Marker.objects.all()
 		for x in markers:
-			marker=Marker.objects.all()[0]
-			coords=marker.marker.coords
-			point=Point(coords)
-			polygon=OstanIran.objects.filter(geom__contains=point)[0]
-			marker_polygon= polygon
-			marker.polygon=marker_polygon
+			marker = Marker.objects.all()[0]
+			coords = marker.marker.coords
+			point = Point(coords)
+			polygon = OstanIran.objects.filter(geom__contains=point)[0]
+			marker.polygon = polygon
 			marker.save()
 		response = self.get_response(request)
 		return response

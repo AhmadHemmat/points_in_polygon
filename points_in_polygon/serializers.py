@@ -5,7 +5,7 @@ from .models import *
 # serializer of Markers model for use in Markers and MarkersInPolygon views
 class MarkersSerializer(serializers.ModelSerializer):
     class Meta:
-        model= Marker
+        model = Marker
         fields = ['marker', 'slug', 'polygon_name' ]
 
 # serializer of OstanIran model for use in PolygonContainsPoint view
