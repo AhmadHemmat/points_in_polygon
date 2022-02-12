@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.gis.db import models
-from django.contrib.gis.geos import Point, Polygon
 
 
 # Model for entering the borders in the form of polygons
