@@ -15,6 +15,16 @@ class Markers(APIView):
 		data = serialized_data.data
 		return Response({'data': data}, status=status.HTTP_200_OK)
 
+# View for render and send all markers coordinates
+class MarkerCoords(APIView):
+	def get(self, request):
+		markers = Marker.objects.all().values()
+		#markers_coords = markers.marker.coords
+		serialized_data = MarkersSerializer(markers, many=True)
+		data = serialized_data.data
+		return Response({'data': data}, status=status.HTTP_200_OK)
+
+
 # View for rendr and extract the marker points in the one polygon
 class MarkersInPolygon(APIView):
 	def get(self, request):

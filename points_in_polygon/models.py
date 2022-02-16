@@ -20,6 +20,11 @@ class Marker(models.Model):
     @property
     def polygon_name(self):
         return self.polygon.name
-    
+    @property
+    def mc(self):
+        coords1=self.marker.coords
+        coords2=list(reversed(coords1))
+
+        return coords2
     def __str__(self):
         return self.slug

@@ -6,7 +6,7 @@ from .models import *
 class MarkersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Marker
-        fields = ['marker', 'slug', 'polygon_name' ]
+        fields = ['mc', 'slug', 'polygon_name' ]
 
 # serializer of OstanIran model for use in PolygonContainsPoint view
 class OstanIranSerializer(serializers.ModelSerializer):
